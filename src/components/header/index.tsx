@@ -15,7 +15,7 @@ const Header: FC = memo(() => {
 
   const getQuery =useCallback((query:string)=>{
     setSearchQuery(query)
-  },[seachQuery]);
+  },[]);
   
   return (
     <AppBar elevation={0} className={classes.appBar}>

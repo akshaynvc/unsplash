@@ -18,7 +18,7 @@ const SearchBar = memo(({ getQuery }: SearchBarProps) => {
         getQuery(fieldValue);
       }
     },
-    [fieldValue]
+    [fieldValue, getQuery]
   );
   return (
     <TextField
