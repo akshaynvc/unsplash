@@ -4,23 +4,58 @@ import {
   Routes,
   RouteProps,
 } from "react-router-dom";
-import HomePage from "../pages/homepage";
 import Layout from "../core/layout";
-import { FC } from "react";
+import { FC, Suspense, lazy } from "react";
+import Loader from "../components/loader/loader";
+
+const Home = lazy(() => import("../pages/homepage"));
+const UnderConstruction = lazy(()=>import('../pages/underconstruction'))
 
 const appRoutes: RouteProps[] = [
   {
     path: "/",
-    element: <HomePage />,
+    element: <Home />,
+  },
+  {
+    path: "/explore",
+    element: <UnderConstruction />,
+  },
+  {
+    path: "/advertise",
+    element: <UnderConstruction />,
+  },
+  {
+    path: "/premium",
+    element: <UnderConstruction />,
+  },
+  {
+    path: "/login",
+    element: <UnderConstruction />,
+  },
+  {
+    path: "/signup",
+    element: <UnderConstruction />,
+  },
+  {
+    path: "/postphoto",
+    element: <UnderConstruction />,
   },
 ];
 
-const Navigation:FC = () => (
+const Navigation: FC = () => (
   <Router>
     <Layout>
       <Routes>
         {appRoutes?.map((route: RouteProps) => {
-          return <Route key={route.path} {...route} />;
+          return (
+            <Route
+              key={route.path}
+              path={route.path}
+              element={
+                <Suspense fallback={<Loader />}>{route.element}</Suspense>
+              }
+            />
+          );
         })}
       </Routes>
     </Layout>

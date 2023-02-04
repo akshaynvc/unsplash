@@ -1,10 +1,12 @@
-import React, { FC, Fragment, useState } from "react";
+import React, { FC, Fragment, useCallback, useState } from "react";
 import HeroBanner from "../../components/herobanner";
-import { Grid, Box } from "@mui/material";
+import { Grid, Box, Typography, IconButton } from "@mui/material";
 import { useStyle } from "./style";
 import useFetch from "../../utils/hooks/useFetch";
 import { splashDataType } from "../../redux/model";
 import Loader from "../../components/loader/loader";
+import { Download, Add, Favorite } from "@mui/icons-material";
+import { saveAs } from "file-saver";
 
 const HomePage: FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -15,7 +17,10 @@ const HomePage: FC = () => {
   };
 
   const { isLoading, splashData } = useFetch(searchQuery);
-  console.log(isLoading);
+
+  const downloadImage = useCallback((img: string, name: string) => {
+    saveAs(img, `image_by_${name}`);
+  }, []);
   return (
     <Fragment>
       <HeroBanner getQuery={getQuery} />
@@ -31,6 +36,39 @@ const HomePage: FC = () => {
                 className={classes.gridItem}
                 key={e.id}
               >
+                <Box className={classes.hoverItems}>
+                  <Box className={classes.saveIconContainer}>
+                    <IconButton
+                      disableRipple
+                      className={classes.saveIcon}
+                    >
+                      <Favorite className={classes.downloadIcon} />
+                    </IconButton>
+                    <Box className={classes.saveIcon}>
+                      <Add className={classes.downloadIcon} />
+                    </Box>
+                  </Box>
+                  <Box className={classes.profileContainer}>
+                    <Box className={classes.profile}>
+                      <Box
+                        component={"img"}
+                        src={e.user.profile_image.small}
+                        alt="profilePhoto"
+                        className={classes.profilePhoto}
+                      />
+                      <Typography className={classes.userName}>
+                        {e.user.username}
+                      </Typography>
+                    </Box>
+                    <IconButton
+                      onClick={() => downloadImage(e.urls.regular, e.user.name)}
+                      disableRipple
+                      className={classes.downloadIConContainer}
+                    >
+                      <Download className={classes.downloadIcon} />
+                    </IconButton>
+                  </Box>
+                </Box>
                 <Box
                   component={"img"}
                   src={e.urls.regular}

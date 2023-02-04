@@ -10,13 +10,13 @@ import useFetch from "../../utils/hooks/useFetch";
 
 const Header: FC = memo(() => {
   const classes = useStyle();
-  const [seachQuery, setSearchQuery] = useState<string>('')
- useFetch(seachQuery)
+  const [seachQuery, setSearchQuery] = useState<string>("");
+  useFetch(seachQuery);
 
-  const getQuery =useCallback((query:string)=>{
-    setSearchQuery(query)
-  },[]);
-  
+  const getQuery = useCallback((query: string) => {
+    setSearchQuery(query);
+  }, []);
+
   return (
     <AppBar elevation={0} className={classes.appBar}>
       <Toolbar className={classes.toolBar}>
@@ -39,10 +39,10 @@ const Header: FC = memo(() => {
               <Link to={"/explore"} className={classes.navLink}>
                 <Typography className={classes.navText}>Explore</Typography>
               </Link>
-              <Link to={"/explore"} className={classes.navLink}>
+              <Link to={"/advertise"} className={classes.navLink}>
                 <Typography className={classes.navText}>Advertise</Typography>
               </Link>
-              <Link to={"/explore"} className={classes.navLink}>
+              <Link to={"/premium"} className={classes.navLink}>
                 <Typography className={classes.unsplashPremium}>
                   Unsplash+
                 </Typography>
@@ -51,7 +51,7 @@ const Header: FC = memo(() => {
             <Box
               className={clsx(classes.navLinkContainer, classes.borderBreak)}
             >
-              <Link to={"/explore"} className={classes.navLink}>
+              <Link to={"/login"} className={classes.navLink}>
                 <Typography className={classes.navText}>Log in</Typography>
               </Link>
               <Typography
@@ -59,12 +59,12 @@ const Header: FC = memo(() => {
               >
                 /
               </Typography>
-              <Link to={"/explore"} className={classes.navLink}>
+              <Link to={"/signup"} className={classes.navLink}>
                 <Typography className={classes.navText}>Sign up</Typography>
               </Link>
             </Box>
             <Box className={classes.navLinkButton}>
-              <Link to={"/explore"} className={classes.navButtonLink}>
+              <Link to={"/postphoto"} className={classes.navButtonLink}>
                 <Typography className={classes.navButton}>
                   Submit a photo
                 </Typography>

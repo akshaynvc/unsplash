@@ -18,6 +18,8 @@ export const useStyle = makeStyles(() => {
         padding:'10rem 22rem',
         [theme.breakpoints.down('lg')]:{
             padding:'1rem',
+            alignItems:"center",
+            justifyContent:'center'
         },
         display:'flex',
         flexDirection:'column',
@@ -28,25 +30,28 @@ export const useStyle = makeStyles(() => {
         
     },
     logotext:{
-        fontSize:'46px',
+        fontSize:theme.spacing(6),
         fontWeight:700,
         color:theme.palette.common.white,
     },
     typoSubHeading:{
-        fontSize:'18px',
+        fontSize:theme.spacing(2.4),
         fontWeight:400,
         color:theme.palette.common.white,
     },
     typoSubTitle:{
-        fontSize:'14px',
+        fontSize:theme.spacing(1.8),
         fontWeight:400,
         color:theme.palette.common.white,
-        marginTop:'4px'
+        marginTop:theme.spacing(.5)
     },
     searchBox:{
         background:theme.palette.common.white,
         borderRadius:theme.spacing(.5),
         marginTop:theme.spacing(2),
+        [theme.breakpoints.down('lg')]:{
+            display:'none'
+        }
     }
   };
 });

@@ -1,9 +1,18 @@
-import React from 'react'
+import { Typography } from "@mui/material";
+import React from "react";
 
 const Loader = () => {
   return (
-    <div>Loading....</div>
-  )
-}
+    <Typography
+      sx={{
+        margin: "50px",
+        textAlign: "center",
+        fontSize: "20px",
+      }}
+    >
+      Loading.....
+    </Typography>
+  );
+};
 
-export default Loader
+export default Loader;

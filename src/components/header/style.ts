@@ -11,6 +11,7 @@ export const useStyle = makeStyles(() => {
     toolBar: {
       color: theme.palette.common.black,
       margin: 0,
+      
     },
     navContainer: {
       display: "flex",

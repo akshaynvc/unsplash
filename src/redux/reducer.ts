@@ -4,7 +4,7 @@ import { isLoading, setData } from "./action";
 
 const initialValue: InitialValuesType = {
   splashData: [],
-  isLoading: true,
+  isLoading: false,
 };
 export const splashReducer = createReducer(initialValue, (builder) => {
   builder.addCase(isLoading, (state) => {
