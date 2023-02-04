@@ -4,9 +4,9 @@ import { Grid, Box, Typography, IconButton } from "@mui/material";
 import { useStyle } from "./style";
 import useFetch from "../../utils/hooks/useFetch";
 import { splashDataType } from "../../redux/model";
-import Loader from "../../components/loader/loader";
 import { Download, Add, Favorite } from "@mui/icons-material";
 import { saveAs } from "file-saver";
+import Loader from "../../components/loader/loader";
 
 const HomePage: FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -80,7 +80,7 @@ const HomePage: FC = () => {
           </Grid>
         </Box>
       ) : (
-        <Loader />
+       <Loader/>
       )}
     </Fragment>
   );
